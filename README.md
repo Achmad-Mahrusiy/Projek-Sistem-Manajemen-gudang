@@ -14,7 +14,7 @@ def get_db_connection():
             host="localhost",
             database="Projek",
             user="postgres",
-            password="1234"  # Ganti dengan password Anda
+            password="1234"  
         )
         return conn
     except Error as e:

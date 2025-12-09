@@ -5,16 +5,18 @@ from datetime import datetime, timedelta
 import sys
 import traceback
 
+
 # KONEKSI DATABASE
+
 
 def koneksi_database():
     try:
         koneksi = psycopg2.connect(
             host="localhost",
-            database="Projek_kelompok 3",
+            database="PROJEK AKHIR BASDA ALGO",
             user="postgres",
-            password="1234",
-            port= "5432",
+            password="password_baru",
+            port= "5433",
             connect_timeout=10
         )
         return koneksi
@@ -23,6 +25,7 @@ def koneksi_database():
         traceback.print_exc()
         return None
 
+
 def tutup_koneksi(koneksi, kursor=None):
     if kursor:
         kursor.close()
@@ -30,13 +33,17 @@ def tutup_koneksi(koneksi, kursor=None):
         koneksi.close()
     
 
+
 # FUNGSI UTILITAS
+
 
 def bersihkan_layar():
     os.system('cls' if os.name == 'nt' else 'clear')
 
+
 def jeda():
     input("\nTekan Enter untuk melanjutkan...")
+
 
 def tampilkan_header(judul):
     bersihkan_layar()
@@ -45,8 +52,10 @@ def tampilkan_header(judul):
     print("=" * 80)
     print()
 
+
 def format_mata_uang(jumlah):
     return f"Rp {jumlah:,.2f}"
+
 
 def validasi_input_float(prompt):
     while True:
@@ -59,6 +68,7 @@ def validasi_input_float(prompt):
         except ValueError:
             print("Input harus berupa angka!")
 
+
 def validasi_input_integer(prompt):
     while True:
         try:
@@ -70,7 +80,9 @@ def validasi_input_integer(prompt):
         except ValueError:
             print("Input harus berupa bilangan bulat!")
 
+
 # FUNGSI KATALOG
+
 
 def lihat_katalog_produk(filter_tersedia=True):
     koneksi = koneksi_database()
@@ -132,6 +144,7 @@ def lihat_katalog_produk(filter_tersedia=True):
     finally:
         koneksi.close()
 
+
 def tampilkan_katalog(filter_tersedia=True, untuk_admin=False):
     katalog = lihat_katalog_produk(filter_tersedia)
     
@@ -140,7 +153,7 @@ def tampilkan_katalog(filter_tersedia=True, untuk_admin=False):
         return
     
     if untuk_admin:
-        tampilkan_header("KATALOG PRODUK ADMIN")
+        tampilkan_header("KATALOG PRODUK TOKO")
     else:
         tampilkan_header("KATALOG PRODUK TOKO")
     
@@ -176,6 +189,7 @@ def tampilkan_katalog(filter_tersedia=True, untuk_admin=False):
     
     print(f"\n{'='*80}")
     return katalog
+
 
 def lihat_ringkasan_stok():
     koneksi = koneksi_database()
@@ -242,6 +256,7 @@ def lihat_ringkasan_stok():
     finally:
         koneksi.close()
 
+
 def tampilkan_ringkasan_stok():
     ringkasan_stok, stok_menipis, stok_habis = lihat_ringkasan_stok()
     
@@ -289,7 +304,9 @@ def tampilkan_ringkasan_stok():
     
     print(f"\n{'='*80}")
 
+
 # FUNGSI MANAJEMEN PRODUK
+
 
 def lihat_semua_produk():
     koneksi = koneksi_database()
@@ -317,6 +334,7 @@ def lihat_semua_produk():
     finally:
         koneksi.close()
 
+
 def tampilkan_produk():
     produk_list = lihat_semua_produk()
     
@@ -336,6 +354,7 @@ def tampilkan_produk():
     print(f"{'-'*60}")
     print(f"Total produk: {len(produk_list)}")
     return produk_list
+
 
 def tambah_produk(nama_produk, kategori, satuan):
     koneksi = koneksi_database()
@@ -383,6 +402,7 @@ def tambah_produk(nama_produk, kategori, satuan):
     finally:
         koneksi.close()
 
+
 def edit_produk(id_produk, nama_produk=None, kategori=None, satuan=None):
     koneksi = koneksi_database()
     if not koneksi:
@@ -423,6 +443,7 @@ def edit_produk(id_produk, nama_produk=None, kategori=None, satuan=None):
     finally:
         koneksi.close()
 
+
 def nonaktifkan_produk(id_produk):
     koneksi = koneksi_database()
     if not koneksi:
@@ -450,6 +471,7 @@ def nonaktifkan_produk(id_produk):
         return False
     finally:
         koneksi.close()
+
 
 def aktifkan_produk(id_produk):
     koneksi = koneksi_database()
@@ -479,7 +501,9 @@ def aktifkan_produk(id_produk):
     finally:
         koneksi.close()
 
+
 # FUNGSI MANAJEMEN STOK
+
 
 def tambah_stok(id_katalog, jumlah, harga_awal, harga_jual):     #Menambah stok produk - DENGAN TRIGGER"""
     koneksi = koneksi_database()
@@ -494,8 +518,10 @@ def tambah_stok(id_katalog, jumlah, harga_awal, harga_jual):     #Menambah stok 
             )
             existing = kursor.fetchone()
 
+
             if existing:
                 stok_baru = existing[1] + jumlah
+
 
                 kursor.execute("""  
                     UPDATE katalog
@@ -511,9 +537,11 @@ def tambah_stok(id_katalog, jumlah, harga_awal, harga_jual):     #Menambah stok 
                     FROM produk WHERE id_produk = %s
                 """, (jumlah, harga_awal, harga_jual, id_katalog))
 
+
         koneksi.commit()
         print("Stok berhasil ditambahkan!")
         return True
+
 
     except Error as e:
         print(f"Error menambah stok: {e}")
@@ -521,8 +549,10 @@ def tambah_stok(id_katalog, jumlah, harga_awal, harga_jual):     #Menambah stok 
         koneksi.rollback()
         return False
 
+
     finally:
         koneksi.close()
+
 
 def update_harga(id_katalog, harga_jual):
     koneksi = koneksi_database()
@@ -548,20 +578,28 @@ def update_harga(id_katalog, harga_jual):
     finally:
         koneksi.close()
 
+
 from decimal import Decimal, InvalidOperation
 from datetime import date
 
-def tambah_produk_busuk(id_katalog, qty_busuk_raw, keterangan, id_pengguna):
+
+from decimal import Decimal, InvalidOperation
+from datetime import date
+
+
+def tambah_produk_busuk(id_katalog, qty_busuk_raw, id_pengguna):
     try:
         qty_busuk = Decimal(str(qty_busuk_raw))
     except (InvalidOperation, ValueError):
         print("Jumlah produk busuk tidak valid.")
         return False
 
+
     koneksi = koneksi_database()
     if not koneksi:
         print("Gagal terhubung ke DB!")
         return False
+
 
     try:
         with koneksi.cursor() as kursor:
@@ -578,46 +616,59 @@ def tambah_produk_busuk(id_katalog, qty_busuk_raw, keterangan, id_pengguna):
                 print("Katalog tidak ditemukan.")
                 return False
 
+
             stok_sebelum = Decimal(baris[0])
             nama_produk = baris[1]
             satuan = baris[2]
             harga_awal = Decimal(baris[3])
 
+
             if qty_busuk <= 0:
                 print("Jumlah busuk harus > 0.")
                 return False
+
 
             if qty_busuk > stok_sebelum:
                 print("Jumlah busuk melebihi stok!")
                 return False
 
+
             stok_sesudah = stok_sebelum - qty_busuk
 
-            if stok_sesudah == 0:                   # Status sesuai stok:
+
+            # Status sesuai stok:
+            if stok_sesudah == 0:
                 status_str = 'habis'
             elif stok_sesudah <= Decimal('5'):
                 status_str = 'menipis'
             else:
                 status_str = 'tersedia'
 
+
             nilai_kerugian = qty_busuk * harga_awal
 
+
+            # INSERT tanpa kolom keterangan
             kursor.execute("""
                 INSERT INTO produk_busuk 
                 (id_katalog, nama_produk, qty_busuk, satuan, nilai_kerugian,
-                 keterangan, tanggal_pencatatan, id_user)
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+                 tanggal_pencatatan, id_user)
+                VALUES (%s, %s, %s, %s, %s, %s, %s)
             """, (id_katalog, nama_produk, qty_busuk, satuan,
-                  nilai_kerugian, keterangan, date.today(), id_pengguna))
+                  nilai_kerugian, date.today(), id_pengguna))
 
+
+            # Log stok
             kursor.execute("""
                 INSERT INTO log_stok
                 (id_katalog, tipe_perubahan, jumlah_perubahan,
                  stok_sebelum, stok_sesudah, keterangan, id_user)
                 VALUES (%s, %s, %s, %s, %s, %s, %s)
             """, (id_katalog, 'produk_busuk', -qty_busuk,
-                  stok_sebelum, stok_sesudah, keterangan, id_pengguna))
+                  stok_sebelum, stok_sesudah, f"Produk busuk: {nama_produk}", id_pengguna))
 
+
+            # Update katalog
             kursor.execute("""
                 UPDATE katalog
                 SET stok_tersedia = %s,
@@ -625,17 +676,22 @@ def tambah_produk_busuk(id_katalog, qty_busuk_raw, keterangan, id_pengguna):
                 WHERE id_katalog = %s
             """, (stok_sesudah, status_str, id_katalog))
 
+
         koneksi.commit()
         print("Produk busuk berhasil dicatat.")
         return True
 
+
     except Exception as e:
         koneksi.rollback()
-        print("Error mencatat produk busuk:", e)
+        print(f"Error mencatat produk busuk: {e}")
+        traceback.print_exc()  # Tambahkan ini untuk debug detail
         return False
+
 
     finally:
         koneksi.close()
+
 
 def lihat_katalog_dengan_harga():
     koneksi = koneksi_database()
@@ -671,7 +727,9 @@ def lihat_katalog_dengan_harga():
     finally:
         koneksi.close()
 
+
 # FUNGSI MANAJEMEN PENGGUNA
+
 
 def lihat_semua_pengguna():
     koneksi = koneksi_database()
@@ -699,6 +757,7 @@ def lihat_semua_pengguna():
     finally:
         koneksi.close()
 
+
 def tampilkan_pengguna():
     daftar_pengguna = lihat_semua_pengguna()
     
@@ -718,6 +777,7 @@ def tampilkan_pengguna():
     print(f"{'-'*65}")
     print(f"Total pengguna: {len(daftar_pengguna)}")
     return daftar_pengguna
+
 
 def tambah_pengguna(username, password, nama_lengkap, role):
     koneksi = koneksi_database()
@@ -757,6 +817,7 @@ def tambah_pengguna(username, password, nama_lengkap, role):
         return False
     finally:
         koneksi.close()
+
 
 def edit_pengguna(id_pengguna, username=None, password=None, nama_lengkap=None, role=None):
     """Mengedit pengguna"""
@@ -805,6 +866,7 @@ def edit_pengguna(id_pengguna, username=None, password=None, nama_lengkap=None, 
     finally:
         koneksi.close()
 
+
 def nonaktifkan_pengguna(id_pengguna):
     koneksi = koneksi_database()
     if not koneksi:
@@ -832,6 +894,7 @@ def nonaktifkan_pengguna(id_pengguna):
         return False
     finally:
         koneksi.close()
+
 
 def aktifkan_pengguna(id_pengguna):
     koneksi = koneksi_database()
@@ -861,7 +924,9 @@ def aktifkan_pengguna(id_pengguna):
     finally:
         koneksi.close()
 
+
 # FUNGSI LAPORAN
+
 
 def dapatkan_penjualan_hari_ini():
     koneksi = koneksi_database()
@@ -894,6 +959,7 @@ def dapatkan_penjualan_hari_ini():
     finally:
         koneksi.close()
 
+
 def tampilkan_penjualan_hari_ini():
     penjualan = dapatkan_penjualan_hari_ini()
     
@@ -918,6 +984,7 @@ def tampilkan_penjualan_hari_ini():
     print(f"{'-'*95}")
     print(f"Total Transaksi : {total_transaksi}")
     print(f"Total Penjualan : {format_mata_uang(total_penjualan)}")
+
 
 def dapatkan_semua_transaksi():
     koneksi = koneksi_database()
@@ -949,10 +1016,11 @@ def dapatkan_semua_transaksi():
     finally:
         koneksi.close()
 
+
 def tampilkan_riwayat_transaksi():
     transaksi_list = dapatkan_semua_transaksi()
     
-    tampilkan_header("RIWAYAT TRANSAKSI SEMUA WAKTU")
+    tampilkan_header("RIWAYAT TRANSAKSI")
     
     if not transaksi_list:
         print("Tidak ada transaksi!")
@@ -974,6 +1042,7 @@ def tampilkan_riwayat_transaksi():
     print(f"{'-'*95}")
     print(f"Total Transaksi : {total_transaksi}")
     print(f"Total Penjualan : {format_mata_uang(total_penjualan)}")
+
 
 def dapatkan_penjualan_mingguan():
     koneksi = koneksi_database()
@@ -1007,6 +1076,7 @@ def dapatkan_penjualan_mingguan():
     finally:
         koneksi.close()
 
+
 def tampilkan_penjualan_mingguan():
     penjualan_mingguan = dapatkan_penjualan_mingguan()
     
@@ -1031,6 +1101,7 @@ def tampilkan_penjualan_mingguan():
     
     print(f"{'-'*95}")
     print(f"{'TOTAL':<55} {format_mata_uang(total_penjualan):<20} {format_mata_uang(total_laba):<20}")
+
 
 def dapatkan_produk_terlaris(periode='all', limit=10):
     koneksi = koneksi_database()
@@ -1072,6 +1143,7 @@ def dapatkan_produk_terlaris(periode='all', limit=10):
     finally:
         koneksi.close()
 
+
 def tampilkan_produk_terlaris():
     tampilkan_header("PRODUK TERLARIS")
     
@@ -1100,6 +1172,7 @@ def tampilkan_produk_terlaris():
     for produk in produk_terlaris:
         nama, terjual, satuan, total, harga_rata = produk
         print(f"{nama:<20} {terjual:<10} {satuan:<8} {format_mata_uang(total):<20} {format_mata_uang(harga_rata):<15}")
+
 
 def dapatkan_produk_kurang_laku(periode='all', limit=10):
     koneksi = koneksi_database()
@@ -1143,6 +1216,7 @@ def dapatkan_produk_kurang_laku(periode='all', limit=10):
     finally:
         koneksi.close()
 
+
 def tampilkan_produk_kurang_laku():
     tampilkan_header("PRODUK KURANG LAKU")
     
@@ -1172,7 +1246,9 @@ def tampilkan_produk_kurang_laku():
         nama, satuan, stok, harga, terjual = produk
         print(f"{nama:<20} {satuan:<8} {stok:<10} {format_mata_uang(harga):<12} {terjual:<10}")
 
+
 # FUNGSI STRUK TRANSAKSI
+
 
 def dapatkan_data_struk(kode_transaksi=None, id_transaksi=None):
     koneksi = koneksi_database()
@@ -1225,6 +1301,7 @@ def dapatkan_data_struk(kode_transaksi=None, id_transaksi=None):
         return None
     finally:
         koneksi.close()
+
 
 def cetak_struk():
     tampilkan_header("CETAK STRUK TRANSAKSI")
@@ -1332,11 +1409,14 @@ def cetak_struk():
     if cetak_ulang == 'y':
         cetak_struk()
 
+
 # FUNGSI TRANSAKSI KASIR
+
 
 def generate_kode_transaksi():
     timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
     return f"TRX-{timestamp}"
+
 
 def dapatkan_produk_by_id(id_katalog):
     koneksi = koneksi_database()
@@ -1362,6 +1442,7 @@ def dapatkan_produk_by_id(id_katalog):
         return None
     finally:
         koneksi.close()
+
 
 def proses_penjualan(data_pengguna):
     tampilkan_header("TRANSAKSI PENJUALAN")
@@ -1504,6 +1585,7 @@ def proses_penjualan(data_pengguna):
     
     jeda()
 
+
 def simpan_transaksi(keranjang, total_belanja, uang_dibayar, kembalian, data_pengguna):
     koneksi = koneksi_database()
     if not koneksi:
@@ -1513,6 +1595,7 @@ def simpan_transaksi(keranjang, total_belanja, uang_dibayar, kembalian, data_pen
         with koneksi.cursor() as kursor:
             kode_transaksi = generate_kode_transaksi()
 
+
             # Insert transaksi
             kursor.execute("""
                 INSERT INTO transaksi (kode_transaksi, id_user, total_belanja, uang_dibayar, kembalian)
@@ -1520,15 +1603,19 @@ def simpan_transaksi(keranjang, total_belanja, uang_dibayar, kembalian, data_pen
                 RETURNING id_transaksi
             """, (kode_transaksi, data_pengguna['id_user'], total_belanja, uang_dibayar, kembalian))
 
+
             id_transaksi = kursor.fetchone()[0]
+
 
             for item in keranjang:
                 # Ambil stok sebelum update
                 kursor.execute("SELECT stok_tersedia FROM katalog WHERE id_katalog = %s", (item['id_katalog'],))
                 stok_sebelum = kursor.fetchone()[0]
 
+
                 # Hitung stok baru
                 stok_baru = stok_sebelum - item['qty']
+
 
                 # Insert detail transaksi
                 kursor.execute("""
@@ -1538,6 +1625,7 @@ def simpan_transaksi(keranjang, total_belanja, uang_dibayar, kembalian, data_pen
                 """, (id_transaksi, item['id_katalog'], item['nama_produk'], item['qty'],
                       item['satuan'], item['harga_satuan'], item['harga_modal'], item['subtotal']))
 
+
                 # Update HANYA stok_tersedia
                 # TRIGGER akan otomatis set status yang benar!
                 kursor.execute("""
@@ -1546,16 +1634,19 @@ def simpan_transaksi(keranjang, total_belanja, uang_dibayar, kembalian, data_pen
                     WHERE id_katalog = %s
                 """, (stok_baru, item['id_katalog']))
 
+
                 # Insert log stok
                 kursor.execute("""
                     INSERT INTO log_stok
-                    (id_katalog, tipe_perubahan, jumlah_perubahan, stok_sebelum, stok_sesudah, keterangan, id_user)
+                    (id_katalog, tipe_perubahan, jumlah_perubahan, stok_sebelum, stok_sesudah, id_user)
                     VALUES (%s, 'penjualan', %s, %s, %s, %s, %s)
                 """, (item['id_katalog'], -item['qty'], stok_sebelum, stok_baru,
                       f"Penjualan transaksi {kode_transaksi}", data_pengguna['id_user']))
 
+
             koneksi.commit()
             return True
+
 
     except Error as e:
         print(f"Error menyimpan transaksi: {e}")
@@ -1564,6 +1655,7 @@ def simpan_transaksi(keranjang, total_belanja, uang_dibayar, kembalian, data_pen
         return False
     finally:
         koneksi.close()
+
 
 def cetak_struk_setelah_transaksi(keranjang, total_belanja, uang_dibayar, kembalian, data_pengguna):
     tampilkan_header("STRUK TRANSAKSI")
@@ -1592,7 +1684,9 @@ def cetak_struk_setelah_transaksi(keranjang, total_belanja, uang_dibayar, kembal
     if cetak_ulang == 'y':
         cetak_struk_setelah_transaksi(keranjang, total_belanja, uang_dibayar, kembalian, data_pengguna)
 
+
 # FUNGSI DASHBOARD
+
 
 def dapatkan_data_dashboard(data_pengguna):
     koneksi = koneksi_database()
@@ -1674,6 +1768,7 @@ def dapatkan_data_dashboard(data_pengguna):
     finally:
         koneksi.close()
 
+
 def tampilkan_dashboard(data_pengguna):
     if data_pengguna['role'] == 'admin':
         tampilkan_header("DASHBOARD ADMIN - SISTEM MANAJEMEN TOKO")
@@ -1716,7 +1811,9 @@ def tampilkan_dashboard(data_pengguna):
     
     print("=" * 80)
 
+
 # FUNGSI MENU
+
 
 def menu_manajemen_produk():
     while True:
@@ -1779,6 +1876,7 @@ def menu_manajemen_produk():
             print("Pilihan tidak valid!")
             jeda()
 
+
 def menu_manajemen_stok(pengguna_sekarang):
     while True:
         tampilkan_header("MANAJEMEN STOK")
@@ -1835,13 +1933,13 @@ def menu_manajemen_stok(pengguna_sekarang):
             try:
                 id_katalog = int(input("\nID Katalog: ").strip())
 
+
                 from decimal import Decimal
                 qty_busuk = Decimal(input("Jumlah produk busuk: ").strip())
-                keterangan = input("Keterangan: ").strip()
                 
                 if qty_busuk > 0:
                     # Gunakan pengguna_sekarang yang sudah diterima sebagai parameter
-                    tambah_produk_busuk(id_katalog, qty_busuk, keterangan, pengguna_sekarang['id_user'])
+                    tambah_produk_busuk(id_katalog, qty_busuk, pengguna_sekarang['id_user'])
                 else:
                     print("Jumlah harus positif!")
             except ValueError:
@@ -1852,6 +1950,7 @@ def menu_manajemen_stok(pengguna_sekarang):
         else:
             print("Pilihan tidak valid!")
             jeda()
+
 
 def menu_manajemen_pengguna():
     while True:
@@ -1919,6 +2018,7 @@ def menu_manajemen_pengguna():
             print("Pilihan tidak valid!")
             jeda()
 
+
 def menu_laporan():
     while True:
         tampilkan_header("LAPORAN & ANALISIS")
@@ -1953,7 +2053,9 @@ def menu_laporan():
             print("Pilihan tidak valid!")
             jeda()
 
+
 # LOGIN & APLIKASI UTAMA
+
 
 def login():
     tampilkan_header("LOGIN SISTEM MANAJEMEN TOKO")
@@ -2002,6 +2104,7 @@ def login():
     finally:
         koneksi.close()
 
+
 def menu_admin(pengguna_sekarang):
     while True:
         tampilkan_dashboard(pengguna_sekarang)
@@ -2012,7 +2115,7 @@ def menu_admin(pengguna_sekarang):
         print("3.  Manajemen Stok")
         print("4.  Manajemen Pengguna")
         print("5.  Laporan & Analisis")
-        print("6.  Katalog Produk (Admin)")
+        print("6.  Katalog Produk")
         print("7.  Ringkasan Stok")
         print("8.  Logout")
         print("9.  Keluar Program")
@@ -2047,6 +2150,7 @@ def menu_admin(pengguna_sekarang):
     
     return True
 
+
 def menu_kasir(pengguna_sekarang):
     while True:
         tampilkan_dashboard(pengguna_sekarang)
@@ -2076,7 +2180,9 @@ def menu_kasir(pengguna_sekarang):
     
     return True
 
+
 # PROGRAM UTAMA
+
 
 def utama():
     tampilkan_header("SISTEM MANAJEMEN TOKO - KELOMPOK 3")
@@ -2097,7 +2203,9 @@ def utama():
                 print("Terima kasih!")
                 break
 
+
 if __name__ == "__main__":
     utama()
+
 
 

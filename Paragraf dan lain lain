@@ -1,3 +1,10 @@
+<!-- <!DOCTYPE html> --> <!--declares HTML5 tipe dokumen-->
+<!-- <html>  --> <!--element penting untuk setiap halaman-->
+<!-- head --> <!--isi metadata (tidak terlihat di halaman)-->
+<!-- <body> --> <!--isi informasi yang terlihat disetiap halaman.-->
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,14 +16,14 @@
 
 <body>
   <h1>Dokumen</h1>
-  <h2>Halaman kedua<hr>Brikut tentang paragraf html<h2>
-  <p>Paragraf awal</p>
-  <p>Paragraf kedua<br> digunakan untuk muncul dibaris berikutnya</p>
-  <pre>mengikuti setiap barisan 
+  <h2>Halaman kedua<hr>Berikut tentang paragraf html<h2> <!--<hr> tanda ini memberi horizontal line-->
+  <p>Paragraf awal</p>  <!--<P> tanda ini adalah paragraf, bisa diberi angka setiap paragrafnya tanpa mengubah bentuk paragrafnya-->
+  <p>Paragraf kedua<br> digunakan untuk muncul dibaris berikutnya</p>  <!--<br> tanda ini adalah line break -->
+  <pre>mengikuti setiap barisan    
       barisan pertama
       barisan kedua
       barisan ketiga
-      barisan keempat</pre>
+      barisan keempat</pre> <!--<pre> tanda ini mengikuti pola baris yang sesuai dengan yang kita ketik-->
   <!-- ini adalah comment untuk html -->
 </body>
 

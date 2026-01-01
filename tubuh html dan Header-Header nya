@@ -1,19 +1,27 @@
+<!-- <!DOCTYPE html> --> declares HTML5 tipe dokumen.
+<!-- <html>  --> element penting untuk setiap halaman.
+<!-- head --> isi metadata (tidak terlihat di halaman).
+<!-- <body> --> isi informasi yang terlihat disetiap halaman.
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Document</title> <!--Nama Halaman yang kamu inginkan-->
 </head>
 
 <body>
-    <h1>Dokumen</h1>
+    <h1>Dokumen</h1>  <!-- header paling besar-->
     <h2>Dokumen</h2>
     <h3>Dokumen</h3>
     <h4>Dokumen</h4>
     <h5>Dokumen</h5>
-    <h6>Dokumen</h6>
+    <h6>Dokumen</h6>  <!-- header paling kecil -->
 </body>
 
 </html>

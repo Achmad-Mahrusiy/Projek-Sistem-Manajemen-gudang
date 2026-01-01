@@ -2,6 +2,9 @@
 <!-- <html>  --> element penting untuk setiap halaman.
 <!-- head --> isi metadata (tidak terlihat di halaman).
 <!-- <body> --> isi informasi yang terlihat disetiap halaman.
+<!-- opening tag pakai tanda ini <tagname>, dan untuk closing tag pakai tanda ini </tagname>-->
+<!-- ada juga self-closing tag dengan tanda ini <tagname/> -->
+<!-- element dengan content <tagname>content</tagname> -->
 
 
 
@@ -9,11 +12,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<head>  <!--ini adalah opening tag-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title> <!--Nama Halaman yang kamu inginkan-->
-</head>
+</head>  <!--ini adalah closing tag-->
 
 <body>
     <h1>Dokumen</h1>  <!-- header paling besar-->

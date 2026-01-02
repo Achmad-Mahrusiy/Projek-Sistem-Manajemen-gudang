@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>text Styling HTML</title>
+</head>
+
+<body>
+  <!--Text styling HTML-->
+  
+  <strong> Tulisan tebal </strong>
+  <b>Bold  text (visual only)</b>
+  <em>empasized text</em>
+  <i>text miring</i>
+  <u>text bergaris bawah</u>
+  <mark>highlighted text</mark>
+  <del>text dicoret</del>
+  <ins>masukan text</ins>
+  <sub>Subscript</sub>
+  <sup>Superscript</sup>
+  <small>small text</small>
+  <code>code snippet</code>
+  <kbd>keyboard input</kbd>
+  <var>variabel</var>
+  <samp>sample output</samp>
+</body>
+
+</html>
+
+

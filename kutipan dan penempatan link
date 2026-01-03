@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>kutipan dan penempatan link</title>
+</head>
+
+<body>
+  <!--link menuju ke halaman lain / internal link-->
+  <p>ini untuk melihat halaman <a href="index.html">berikutnya</a></p>
+
+  <!--Email link-->
+  <a href="mailto:someone@contoh.com">Send Email</a>
+
+  <!--phone link-->
+  <a href="tel:+44233423432"> Hubungi saya</a>
+
+  <!--link eksternal-->
+  <p>Instagram dibuat oleh <a href="https://www.instagram.com/zuck/">Mark Zuckerberg</a>
+
+  <!--link menuju ke section-->
+  <a href="#section-id">Pembuat bahasa pemograman Java</a>
+
+  <!--kutipan pendek yang bisa dari diri sendiri atau dari sumber lain-->
+  <q cite="isi link dari kutipan itu">ini adalah kutipan kecil yang hanya sebaris (inline)</q>
+    <!--bisa dikasih cite ataupun tidak tergantung dari sumber yang kamu berikan pada atrribut q-->
+
+  <!--kutipan panjang yang bisa dari diri sendiri atau dari sumber lain-->
+  <blockquote cite="isi link dari kutipan yang kamu ambil dari sumber lain">jadi beginilah kutipan panjang yang diambil 
+    dari sebuah website dengan panjang kutipan yang bisa saja panjang ataupun hanya 2 baris saja. </blockquote>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+untuk menaruh video dan audio sebernarnya sama dengan cara menaruh gambar.
+
+contoh cara menaruh audio di html
+
+<!--contoh-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cara menaruh audio</title>
+</head>
+
+<body>
+
+<audio controls>
+  <source src="dj_alok.mp3" type="audio/mpeg">
+  <source src="mr_ambarita.ogg" type="audio/ogg">
+  browsermu tidak mendukung suara.
+</audio>
+
+</body>
+</hmtl>
+
+contoh cara menaruh video di html
+
+<!--contoh-->
+
+<!DOCTYPE html>
+<heml lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, intial-scale=1.0">
+  <title>cara menaruh video</title>
+</head>
+
+<body>
+<video controls width="400">
+  <source src="bahlil.mp4" type="bahlil/mp4">
+  <source src="etanol.webm" type="etanol/webm">
+  browsermu tidak mendukung video.
+</video>
+
+</body>
+</html>
+

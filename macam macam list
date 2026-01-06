@@ -1,0 +1,104 @@
+disini saya akan menjelaskan cara membuat berbagai mcacam list di hmtl
+
+
+<!--Unordered List-->
+yang pertama adalah unordered lists yaitu tag yang membuat list tidak berurutan, yang itemnya ditandai dengan simbol simbol,
+biasanya digunakan untuk menampilkan item yang tidak memiliki urutan penting.
+
+contoh unordered list
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <tiitle>Berbagai macam list</title>
+</head>
+
+<body>
+<p>Unordered List</p>
+  <ul>
+    <li>item pertama</li>
+    <li>item kedua</li>
+    <li>item ketiga</li>
+  </ul>
+</body>
+</html>
+
+
+<!--Ordered List-->
+ordered list yaitu jenis list yang diberi nommor atau urutan <!--berupa angka, huruf atau romawi--> secara otomatis.
+
+contoh ordered list
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ordered List</title>
+</head>
+
+<body>
+<p>Ordered List</p>
+  <ol type="A"> <!--A,B,C-->
+    <li>pertama</li>
+    <li>kedua</li>
+    <li>ketiga</li>
+  <ol>
+  
+  <ol type="a"> <!--a,b,c-->
+    <li>pertama</li>
+    <li>kedua</li>
+    <li>ketiga</li>
+  <ol>
+
+  <ol type="1"> <!--1,2,3-->
+    <li>pertama</li>
+    <li>kedua</li>
+    <li>ketiga</li>
+  <ol>
+
+  <ol type="I"> <!--I,II,III-->
+    <li>pertama</li>
+    <li>kedua</li>
+    <li>ketiga</li>
+  <ol>
+
+  <ol type="i"> <!--i,ii,iii-->
+    <li>pertama</li>
+    <li>kedua</li>
+    <li>ketiga</li>
+  <ol>
+
+</body>
+</html>
+
+
+<!--Definition List-->
+
+Definition List adalah jenis list unutk menyajikan istilah dan definisi atau diskripsi, seperti kamus atau glosarium.
+
+contoh deefinition list
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Definition List</title>
+</head>
+
+<body>
+  <dl>
+    <dt>HTML</dt>
+    <dd>Hyper Text Markup Language</dd>
+    <dt>CSS</dt>
+    <dd>Cascading Style Sheets</dd>
+  </dl>
+  
+</body>
+</html>

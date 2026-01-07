@@ -1,0 +1,68 @@
+table html adalah elemen yang menampilkan data terstruktur dalam baris dengan atribut<tr> 
+dan kolom dengan atribut (<td> atau <th>) di halaman web, table html berfungsi untuk mengorganisir informasi
+seoerti data keuangan, jadwal, atau daftar secara visual dan mudah dibaca.
+
+biasanya atribut yang digunakan dalam table yaitu 
+
+Element utama
+
+  <table> <!--sebagai tag awal table dan akhir table.-->
+  <tr> <!--untuk membuat baris baru dalam table.-->
+  <td> <!--berisi data standar dalam baris-->
+  <th> <!--berisi judul kolom atau baris, biasanya dicetak tebal-->
+
+Elemet pelengkap
+
+  atribute opsional
+    <caption> <!--Untuk memberikan caption judul atau deskripsi untuk tabel-->
+    <htead> <!---digunakn untuk mengelompokkan judul/header table->
+    <tbody> <!--digunakan untuk mengelompokkan isi data/table-->
+    <tfoot> <!--digunakan untuk mengelompokkan footer table/ringkasan-->
+    <colgroup> dan <col> <!--digunakan untuk mengatur properti di seluruh kolom atau group kolom. seperti lebar-->
+
+  atribute penting
+    <colspan> <!--untuk menggabungkan baris secara horizontal atau ke samping-->
+    <rowspan> <!--untuk menggabungkan baris secara vertikal atau kebawah-->
+
+
+contoh table html
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport", content="width=device-width, intial-scalee=1.0">
+  <title>Table</title>
+</head>
+
+<body>
+
+  <table>
+    <thead>
+      <tr>
+        <th>HTML</th>
+        <th>CSS</th>
+        <th>Java Script</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Tubuh WEB</td>
+        <td>Design WEB</td>
+        <td>System WEB</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>Contoh 1</td>
+        <td>Contoh 2</td>
+        <td>Contoh 3</td>
+      </tr>
+    </tfoot>
+  </table>
+
+</body>
+
+</html>
+

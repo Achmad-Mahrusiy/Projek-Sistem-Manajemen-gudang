@@ -1,0 +1,113 @@
+Form HTML adalah elemen vital untuk mengumpulkan data pengguna melalui berbagai kontrol input(teks, checkbox, radio, dll.)
+dalam sebuah wadah `<form>`, yang mengirimkan data tersebut ke server untuk diproses. berfungsi sebagai jembatan interaktif untuk
+fitur seperti login, pendaftaran, pencarian, atau komentar di situs web.
+
+Form ini menggunakan atribut `action` (tujuan data) dan `method` (cara pengiriman, `GET/POST`), serta didalamnya terdapat berbagai
+tag input seperti `<input>`, `<textarea>`, dam `<button>` untuk membuat elemen interaktif yang bisa ditata dengan CSS.
+
+Elemen dasar Dorm HTML
+1. `<form>` : tag pembungkus utama untuk semua elemen form.
+`    action` : URL tujuan untuk mengirim data(misal `proses.php`).
+`    method` : cara pengirim data (`GET` untuk URL, `POST` untuk badan request).
+
+2. label : memberikan deskripsi untuk elemen input, meningkatkan aksesbilitas.
+
+3. input : tag serbaguna untuk berbagai jenis input.
+  contohnya :
+    `type="text"` : kolom teks biasa.
+    `type="checkbox"` : kotak centang voting.
+    `type="password"` : kolom teks tersembunyi (*******).
+    `type="radio"` : tombol radio (pilih salah satu).
+    `type="submit"` : tombol untuk mengirim form.
+    `type="file"` : digunakan untuk mengunggah file.
+    `type="email"` : untuk memastikan input berupa format email yang valid.
+    `type="number"` : hanya menerima input angka, dengan tombol panah naik / turun.
+    `type="date"` : untuk memilih tanggal dari kalender.
+    `type="button"` : tombol generik yang dapat diberi aksi dengan JavaScript.
+    `type="search"` : kolom untuk input pencarian.
+    `type="url"` : memastikan input URL yang valid.
+    `type="tel"` : digunakan untuk telephone.
+    `type="datetime-local"` : pwmilih tanggal  dan waktu sekaligus.
+    `type="time"` : pemilih waktu (hari, bulan, tahun).
+    `type="range"` : kontrol geser (slider) untuk memilih angka atau rentang.
+    `type="hidden"` : input yang tidak terlihat di layar, digunakan untuk mengirim data sistem.
+    `type="reset"` : tombol untuk menghapus semua isi form kembali ke awal.
+    `type="image"` : tombol kirim (submit) yang menggunakan gambar sebagai visualnya.
+    
+    
+contoh form :
+
+`<!DOCTYPE html>`
+`<html lang="en">`
+
+`<head>`
+`  <meta charset="UTF-8">`
+`  <meta name="viewport", content="width=device-width, intial-scale=1.0">`
+`</head>`
+
+`<body>`
+`  <p>Form</p>`
+`  <form>`
+`    <fieldset>`
+`      <legend>Personal Information</legend>`
+
+`      <!--Text input-->`
+`      <label for="name">Name: </label>`
+`      <input type="text" id="name" name="name" required>`
+
+`      <!--Email input-->`
+`      <label for="email">Email: </label>`
+`      <input type="email" id="email" name="email" required>`
+
+`      <!Passsword input-->`
+`      <label for="password">Password: </label>`
+`      <input type="password" id="password" name="password" required>`
+
+`      <!--Number input-->`
+`      <label for="age">Age: </label>`
+`      <input type="number" id="age" name="age" min="1" max="100">`
+
+`      <!--Date Input-->`
+`      <label for="birthdate">Birthdate: </label>`
+`      <input type="date" id="birthdate" name="birthdate">`
+
+`      <!--Radio buttons-->`
+`      <fieldset>`
+`        <legend>Gender: </legend>`
+`        <input type="radio" id="male" name="gender" value="male">`
+`        <label for="male">Male</label>`
+
+`        <input type="radio" id="female" name="gender" value="female">`
+`        <label for="female">Female</label>`
+`      </fieldset>`
+
+`      <!--Checkboxes-->`
+`      <input type="checkbox" id="newsletter" name="newsletter" value="yes">`
+`      <label for="newsletter">Subscribe to newsletter</label>`
+
+`      <!--Dropdown select-->`
+`      <label for="country">Country: </label>`
+`      <select id="country" name="country">`
+`        <option value="">Select country</option>`
+`        <option value="us">United States</option>`
+`        <option value="uk">United Kingdom</option>`
+`        <option value="ind">Indonesia</option>`
+`      </select>`
+
+`      <!--Textarea-->`
+`      <label for="comments">comments: </label>`
+`      <textarea id="comments" name="comments" rows="4" cols="50"></textarea>`
+
+`      <!--File Upload-->`
+`      <label for="file">Upload file</label>`
+`      <input type="file" id="file" name="file" accept=".pdf,.doc,.docx">`
+
+`      <!--Submit button-->`
+`      <input type="submit" value="Submit">`
+`      <button type="submit">Kirim</button>`
+`      <button type="reset">Hapus semua</button>`
+`    </fieldset>`
+`  </form>`
+`</body>`
+
+`</html>`

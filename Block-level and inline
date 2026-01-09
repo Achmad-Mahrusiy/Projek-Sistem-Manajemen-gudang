@@ -1,0 +1,39 @@
+`Block-level` element di html adalah elemen yang selalu memulai garis baru didalam dokument.
+`Block-level` element ini bersifat "rakus" terhadap ruang horizontal 
+  karena secara otomatis akan memenuhi 100% lebar dari konteiner induknya.
+  
+Dan kita bisa mengatur lebar (`width`), tinggi(`height`), serta `margin` dan `padding` secara penuh pada keempat sisinya.
+karena sifatnya yang membentuk "blok", element ini sering digunakan untuk menyusun struktur besar sebuah halaman web.
+
+Daftar lengkap element yang termasuk dalam kategori `block-level` :
+
+  1. Struktur dan Kontainer : `<div>`, `<main>`, `<section>`, `<article>`, `<header>`, `<footer>`, `<nav>`, 
+                              `<aside>`, `<address>`, `<details>`, `<summary>`.
+                                
+  2. Text :  `<p>`, `<h1>` sampai `<h6>`, `<blockquote>`, `<pre>`, `<he>`.
+
+  3. List :  `<ul>`, `<ol>`, `<li>`, `<dl>`, `<dt>`, `<dd>`.
+
+  4. Form dan table :  `<form>`, `<fieldset>`, `<table>`, `<tfoot>`.
+
+  5. Lainnya :  `<canvas>`, `<figure>`, `<figcaption>`, `<noscript>`, `<video>`.
+
+
+`Inline` element berbeda dengan `block-level` element karena tidak memulai baris baru.
+element ini hanya mengambil ruang sebanyak yang diperlukan oleh konten di dalamnya dan akan berdampingan dengan element lain
+dalam satu baris yang sama.
+    
+element iniline biasanya digunakan untuk memformat bagian kecil didalam teks. 
+Secara teknis, element ini tidak mendukung pengaturan `width` dan  `height`melalui CSS, serta pengaturan `margin` dan `padding`
+vertiakl (atas / bawah) tidak akan memengaruhi tata letak element di sekelilingnya.
+
+Daftar lengkap Element yang bersifat `inline element` :
+
+  1. Teks dan Link : `<a>`, `<span>`, `<br>`, `<q>`, `<cite>`, `<code>`, `<time>`, `<var>`, `mark`.
+
+  2. Format teks : `<strong>`, `<b>`, `<i>`, `<small>`, `<sub>`, `<sup>`, `<abbr>`, `<dfn>`, `<kbd>`, `<samp>`,
+                    `<u>`, `<s>`.
+                      
+  3. Media dan Form : `<img>`, `<button>`, `<input>`, `<label>`, `<select>`, `<textarea>`, `<object>`, `<output>`, `<script>`.
+
+    

@@ -1,0 +1,48 @@
+`id` dan `class` adalah atribut html untuk memberi "nama" pada element agar mudah ditata menggunakan `CSS` atau 
+dimanipulasi menggunakan `JavaScript`.
+
+perbedaan pada `id` dan `class` adalah 
+
+`<id>` berfungsi unik yang hanya bisa dipakai pada satu element saja, dan biasanya digunakan untuk menargetkan element tunggal
+  seperti header utama, footer atau sidebar,dan biasanya digunakan untuk interaksi JavaScript yang sangat spesifik.
+
+contoh dari atribut `<id>` :
+
+`<!DOCTYPE html>`
+`<html lang="en">`
+
+`<head>`
+`  <meta charset="UTF-8">`
+`  <meta name="viewport", content="width=device-width, initial-scale=1.0">`
+`</head>`
+
+`<body>`
+`  <h1 id="html">HTML</h1>`
+`  <h2>Beginilah cara menggunakan id</h2>`
+
+`</body>`
+
+`</html>`
+
+`<class>` berfungsi untuk memberi "kelas" atau kelompok pada element, memungkinkan gaya yang sama diterapkan ke banyak element.
+`<class>` biasanya digunaakn untuk mengelompokkan element yang memiliki gaya atau perilaku yang serupa.
+
+contoh daari atribut `<class>` : 
+
+`<!DOCTYPE html>`
+`<html lang="en">`
+
+`<head>`
+`  <meta charset="UTF-8">`
+`  <meta name="viewport", content="width=device-width, initial-scale=1.0">`
+`</head>`
+
+`<body>`
+`  <h2>Class yang digunakan di html</h2>`
+`  <p class="gaya">contoh 1</p>`
+`  <p class="gaya">contoh 2</p>`
+`  <pre class="gaya">berfungsi untuk memberi "kelas" atau kelompok pada element, `
+`      memungkinkan gaya yang sama diterapkan ke banyak element.<pre>`
+`</body>`
+`</html>`
+
